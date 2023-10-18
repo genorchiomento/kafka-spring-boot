@@ -1,5 +1,5 @@
 <h1 align="center">
-  Project Title
+  Spring Boot with Kafka - Messaging
 </h1>
 
 <p align="center">
@@ -10,40 +10,61 @@
 
 </p>
 
-Project description.
+Demo for messaging with Spring Boot and Kafka.
 
 ## Technologies
 
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)&nbsp;
+![Apache Kafka](https://img.shields.io/badge/Apache%20Kafka-000?style=for-the-badge&logo=apachekafka)&nbsp;
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)&nbsp;
 
 ## How to Run
 
 - Clone the git repository:
 
 ```
-git clone $URL_REPOSITORY
+git clone https://github.com/genorchiomento/kafka-spring-boot.git
+```
+
+- Add Host to Docker Container
+
+```
+sudo vim /etc/hosts
+```
+
+- Add hostname 'kafka'
+
+```
+127.0.0.1       kafka
+```
+![kafka-hostname](hostname.png)
+
+- Run docker
+
+```
+docker-compose up -d
 ```
 
 - Build the project:
 
 ```
-./mvnw clean package
+./gradlew clean build
 ```
 
 - Execute:
 
 ```
-java -jar $PATH_JAR
+java -jar ./build/libs/kafka-spring-boot-0.0.1-SNAPSHOT.jar
 ```
 
 - Test
 
 ```
-POST/http
+http kafka:8080/kafka/hello/{name}
+```
 
-{
-    "email": "email",
-    "password": "password",
-    "username": "username"
-}
+- Response
+
+```
+Ok! It's works!
 ```
